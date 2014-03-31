@@ -1,0 +1,14 @@
+Makefile for compiling Arduino program.
+
+require:
+  1. env ARDUINO_HOME and ARLINKED_HOME, if using in Cygwin, the value should like D:/, using windows path
+  2. env ARLINKED_INS to place config.mk define.mk make.mk
+  3. writing a Makefile of your own, like:
+      *
+      *    include $(ARLINKED_INS)/mk/config.mk
+      *    PROGRAM = test_can
+      *    SOURCES = mcp2515_can.cpp m.cpp
+      *    LIBRARIES = SPI.info
+      *    include $(ARLINKED_INS)/mk/make.mk
+      *
+  4. run make.exe included in $ARDUINO_HOME/hardware/tools/avr/utils/bin
