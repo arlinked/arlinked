@@ -41,8 +41,13 @@ DEFAULT_CORE_SOURCES = \
 	WMath.cpp \
 	WString.cpp \
 
+ARDUINO_LIB_PATH = $(ARDUINO_HOME)/hardware/arduino/avr/libraries
+
 vpath %.c $(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino/avr-libc
 vpath %.c $(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino
 vpath %.cpp $(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino
 
-DEPENDENCY_DIR = dps
+DPS = dps
+DPS_LIB = dps/lib
+DPS_CORE = dps/core
+
