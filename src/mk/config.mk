@@ -7,6 +7,11 @@ ARCHIVER = $(ARDUINO_HOME)/hardware/tools/avr/bin/avr-ar
 LINKER = $(ARDUINO_HOME)/hardware/tools/avr/bin/avr-gcc
 OBJCOPY = $(ARDUINO_HOME)/hardware/tools/avr/bin/avr-objcopy
 
+UPLOADER = $(ARDUINO_HOME)/hardware/tools/avr/bin/avrdude
+UPLOADER_CFG = $(ARDUINO_HOME)/hardware/tools/avr/etc/avrdude.conf
+UPLOAD_DEVICE = atmega328p
+UPLOAD_PORT =
+
 DEFAULT_INCLUDE_PATHS = \
 	$(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino \
 	$(ARDUINO_HOME)/hardware/arduino/avr/variants/standard \
@@ -51,3 +56,4 @@ DPS = dps
 DPS_LIB = dps/lib
 DPS_CORE = dps/core
 
+DPS_DIR_HOLDER = $(DPS)/_dir_holder_ $(DPS_LIB)/_dir_holder_ $(DPS_CORE)/_dir_holder_
