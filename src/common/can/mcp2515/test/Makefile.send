@@ -1,0 +1,9 @@
+include $(ARLINKED_INS)/mk/config.mk
+
+PROGRAM = test_can_sender
+SOURCES = send.ino ../mcp2515_can.cpp
+
+LIBRARIES = $(ARDUINO_LIB_PATH)/SPI/SPI.cpp
+INCLUDE_PATHS = ../ $(ARDUINO_LIB_PATH)/SPI
+
+include $(ARLINKED_INS)/mk/make.mk
