@@ -53,7 +53,5 @@ vpath %.c $(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino
 vpath %.cpp $(ARDUINO_HOME)/hardware/arduino/avr/cores/arduino
 
 DPS = dps
-DPS_LIB = dps/lib
-DPS_CORE = dps/core
 
-DPS_DIR_HOLDER = $(DPS)/_dir_holder_ $(DPS_LIB)/_dir_holder_ $(DPS_CORE)/_dir_holder_
+DPS_DIR_HOLDER = $(DPS)/_dir_holder_
