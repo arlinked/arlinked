@@ -179,7 +179,12 @@
 
 #define MCP_READ_STATUS     0xA0
 
-#define MCP_RX_STATUS       0xB0
+#define MCP_SPI_CMD_RX_STATUS                0xB0
+#define MCP_SPI_DAT_RX_STATUS_BIT_IDE        (1 << 3)
+#define MCP_SPI_DAT_RX_STATUS_BIT_RTR        (1 << 4)
+#define MCP_SPI_DAT_RX_STATUS_BIT_RX0        (1 << 6)
+#define MCP_SPI_DAT_RX_STATUS_BIT_RX1        (1 << 7)
+#define MCP_SPI_DAT_RX_STATUS_MSK_RXn        0b110000000
 
 #define MCP_RESET           0xC0
 
@@ -238,14 +243,14 @@
  *   CANINTF Register Bits
  */
 
-#define MCP_RX0IF       0x01
-#define MCP_RX1IF       0x02
-#define MCP_TX0IF       0x04
-#define MCP_TX1IF       0x08
-#define MCP_TX2IF       0x10
-#define MCP_ERRIF       0x20
-#define MCP_WAKIF       0x40
-#define MCP_MERRF       0x80
+#define MCP_INT_BIT_RX0       0x01
+#define MCP_INT_BIT_RX1       0x02
+#define MCP_INT_BIT_TX0       0x04
+#define MCP_INT_BIT_TX1       0x08
+#define MCP_INT_BIT_TX2       0x10
+#define MCP_INT_BIT_ERR       0x20
+#define MCP_INT_BIT_WAK       0x40
+#define MCP_INT_BIT_MERR      0x80
 
 /*
  *  speed 16M

@@ -27,17 +27,13 @@
 
 namespace can {
 
-class CCan;
-
-namespace inner {
-class CCanMcp2515Impl;
-}
-
 extern uint8 CAN_DEBUG_LOG;
+
+class CCanMcp2515Impl;
 
 // can message
 class CCanMessage {
-friend class inner::CCanMcp2515Impl;
+friend class CCanMcp2515Impl;
 private:
 
   /* identifier xxxID either extended (the 29 LSB) or standard (the 11 LSB) */
@@ -62,6 +58,13 @@ public:
   {
     for(uint8 i = 0; i < MAX_CHAR_IN_MESSAGE + 1; ++i)
       m_nDta[i] = 0;
+  }
+
+  CCanMessage(uint8 nExtFlg, uint8 nId, uint8 nLen, const uint8* nData, uint8 nRtr = 0, uint8 nfilhit = 0)
+    : m_nExtFlg(nExtFlg), m_nId(nId), m_nDlc(nLen), m_nRtr(nRtr), m_nfilhit(nfilhit)
+  {
+    for(uint8 i = 0; i < MAX_CHAR_IN_MESSAGE + 1; ++i)
+      m_nDta[i] = nData[i];
   }
 
   uint8 getExtFlag()
@@ -106,29 +109,71 @@ public:
 class CCanStatus
 {
 public:
-  uint8 getRecv0Interrupt() { return true == m_nStatus & MCP_STAT_RX0IF; }
-  uint8 getRecv1Interrupt() { return true == m_nStatus & MCP_STAT_RX1IF; }
-  uint8 getSend0Request()   { return true == m_nStatus & MCP_STAT_TX0REQ; }
-  uint8 getSend0Interrupt() { return true == m_nStatus & MCP_STAT_TX0IF; }
-  uint8 getSend1Request()   { return true == m_nStatus & MCP_STAT_TX1REQ; }
-  uint8 getSend1Interrupt() { return true == m_nStatus & MCP_STAT_TX1IF; }
-  uint8 getSend2Request()   { return true == m_nStatus & MCP_STAT_TX2REQ; }
-  uint8 getSend2Interrupt() { return true == m_nStatus & MCP_STAT_TX2IF; }
+  uint8 recv0Interrupt() const { return true == m_nStatus & MCP_STAT_RX0IF; }
+  uint8 recv1Interrupt() const { return true == m_nStatus & MCP_STAT_RX1IF; }
+  uint8 send0Request()   const { return true == m_nStatus & MCP_STAT_TX0REQ; }
+  uint8 send0Interrupt() const { return true == m_nStatus & MCP_STAT_TX0IF; }
+  uint8 send1Request()   const { return true == m_nStatus & MCP_STAT_TX1REQ; }
+  uint8 send1Interrupt() const { return true == m_nStatus & MCP_STAT_TX1IF; }
+  uint8 send2Request()   const { return true == m_nStatus & MCP_STAT_TX2REQ; }
+  uint8 send2Interrupt() const { return true == m_nStatus & MCP_STAT_TX2IF; }
+  uint8 value() const { return m_nStatus; }
 
 public:
   CCanStatus(uint8 status) : m_nStatus(status) { }
+  CCanStatus& operator=(uint8 val) { m_nStatus = val; }
 
 private:
   uint8 m_nStatus;
 };
 
-namespace inner {
+class CCanRecvStatus
+{
+public:
+/*
+  uint8 recv0Interrupt() const { return true == m_nStatus & MCP_STAT_RX0IF; }
+  uint8 recv1Interrupt() const { return true == m_nStatus & MCP_STAT_RX1IF; }
+  uint8 send0Request()   const { return true == m_nStatus & MCP_STAT_TX0REQ; }
+  uint8 send0Interrupt() const { return true == m_nStatus & MCP_STAT_TX0IF; }
+  uint8 send1Request()   const { return true == m_nStatus & MCP_STAT_TX1REQ; }
+  uint8 send1Interrupt() const { return true == m_nStatus & MCP_STAT_TX1IF; }
+  uint8 send2Request()   const { return true == m_nStatus & MCP_STAT_TX2REQ; }
+  uint8 send2Interrupt() const { return true == m_nStatus & MCP_STAT_TX2IF; }
+  uint8 value() const { return m_nStatus; }
+*/
+
+public:
+  CCanRecvStatus(uint8 status) : m_nStatus(status) { }
+  CCanRecvStatus& operator=(uint8 val) { m_nStatus = val; }
+
+private:
+  uint8 m_nStatus;
+};
+
+class CCanInterruptStatus
+{
+public:
+  uint8 recv0Interrupt()   const { return true == m_nStatus & MCP_INT_BIT_RX0; }
+  uint8 recv1Interrupt()   const { return true == m_nStatus & MCP_INT_BIT_RX1; }
+  uint8 send0Interrupt()   const { return true == m_nStatus & MCP_INT_BIT_TX0; }
+  uint8 send1Interrupt()   const { return true == m_nStatus & MCP_INT_BIT_TX1; }
+  uint8 send2Interrupt()   const { return true == m_nStatus & MCP_INT_BIT_TX2; }
+  uint8 errorInterrupt()   const { return true == m_nStatus & MCP_INT_BIT_ERR; }
+  uint8 wakeInterrupt()    const { return true == m_nStatus & MCP_INT_BIT_WAK; }
+  uint8 msgErrInterrupt()  const { return true == m_nStatus & MCP_INT_BIT_MERR; }
+  uint8 value() const { return m_nStatus; }
+
+public:
+  CCanInterruptStatus(uint8 status) : m_nStatus(status) { }
+  CCanInterruptStatus& operator=(uint8 val) { m_nStatus = val; }
+
+private:
+  uint8 m_nStatus;
+};
 
 class CCanMcp2515Impl
 {
 private:
-  uint8 m_nChipSelectPin;
-public:
 
   /*
   * mcp2515 driver function
@@ -154,7 +199,8 @@ public:
   void modifyRegister(const uint8 address, const uint8 mask, const uint8 data);
 
   /* read mcp2515's Status */
-  uint8 readStatus(void);
+  uint8 read_status(void);
+  uint8 read_RX_status(void);
 
   /* set mode */
   uint8 setCanCtrlMode(const uint8 newmode);
@@ -177,6 +223,10 @@ public:
   /* read can msg */
   void read_canMsg(const uint8 buffer_sidh_addr, CCanMessage* msg);
 
+  void read_from_RXB0_and_clear_RX0IF(CCanMessage* msg);
+  void read_from_RXB1_and_clear_RX1IF(CCanMessage* msg);
+  void read_from_RXBn_and_clear_RXnIF(const uint8 addr_mask, CCanMessage* msg);
+
   /* start transmit */
   void start_transmit(const uint8 mcp_addr);
 
@@ -187,9 +237,6 @@ public:
   * can operator function
   */
 
-  /* read message */
-  uint8 readMsg(CCanMessage* msg);
-
   /* send message */
   uint8 sendMsg(const CCanMessage* msg);
 
@@ -197,12 +244,6 @@ public:
 
 public:
   CCanMcp2515Impl(uint8 _CS);
-
-};
-
-} // end of namespace inner
-
-class CCan {
 
 public:
   /* init can */
@@ -218,7 +259,9 @@ public:
   uint8 send(const CCanMessage *msg);
 
   /* read buf */
-  uint8 recv(CCanMessage *msg);
+  uint8 recv(CCanMessage *msg0, CCanMessage* msg1);
+  uint8 recv0(CCanMessage *msg);
+  uint8 recv1(CCanMessage *msg);
 
   /* if something received */
   uint8 checkReceive(void);
@@ -226,19 +269,20 @@ public:
   /* if something error */
   uint8 checkError(void);
 
-  /* read status */
+  /* check status */
   uint8 checkStatus();
+
+  /* check interrupt status */
+  uint8 checkInterrupt();
+  void clearInterrupt(uint8 clearMask);
 
   uint8 sleep();
 
   uint8 wake();
 
-public:
-  CCan(uint8 chipSelectPin);
-
 private:
-  //! the implementation
-  inner::CCanMcp2515Impl m_canImpl;
+  uint8 m_nChipSelectPin;
+
 };
 
 } // end of namespace can

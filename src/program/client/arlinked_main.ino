@@ -1,6 +1,6 @@
 #include <avr/sleep.h>
 #include <SPI.h>
-#include "../../common/can/mcp2515/mcp2515_can.h"
+#include "arlinked_client.h"
 
 /* Sleep Demo Serial
  * -----------------
@@ -39,7 +39,7 @@ int sleepEnable = 1;
 int sleepStatus = 0;             // variable to store a request for sleep
 int iIdleCounter = 0;            // counter
 
-can::CCan Can10(10);
+CClient client(canBusWakePin, 10);
 
 void wakeUpNow()        // here the interrupt is handled after wakeup
 {
@@ -56,10 +56,10 @@ void setup()
   Serial.begin(9600);
   SPI.begin();
 
-  if(Can10.begin(CAN_125KBPS) == CAN_OK)
-    Serial.print("can init ok!!\r\n");
+  if(client.init() == 0)
+    Serial.println("Client init ok!!");
   else
-    Serial.print("Can init fail!!\r\n");
+    Serial.println("Client init fail!!");
 
   /* Now it is time to enable an interrupt. In the function call 
    * attachInterrupt(A, B, C)
@@ -83,7 +83,7 @@ void setup()
   }
 }
 
-void sleepNow()         // here we put the arduino to sleep
+void deepSleep()         // here we put the arduino to sleep
 {
   /* Now is the time to set the sleep mode. In the Atmega8 datasheet
    * http://www.atmel.com/dyn/resources/prod_documents/doc2486.pdf on page 35
@@ -142,37 +142,32 @@ void sleepNow()         // here we put the arduino to sleep
                            // during normal running time.
 }
 
+void timedSleep(uint32 time)
+{
+    delay(time);                           // waits for a second
+}
+
 void loop()
 {
-  // display information about the counter
-  iIdleCounter++;
-  delay(100);                           // waits for a second
-
-  // compute the serial input
-  uint8 hasData = Can10.checkStatus() & MCP_STAT_RXIF_MASK;
-  if (hasData) {
-    can::CCanMessage msg;
-    uint8 val = Can10.recv(&msg);
-    if(val == CAN_NOMSG)
-      hasData = 0;
-    else
-    {
-      Serial.print("Received message: "); // classic dummy message
-      Serial.println((char*)msg.getData());
-      iIdleCounter = 0;
-    }
+  if(ARLINKED_CLIENT_IDLE == client.run())
+  {
+    iIdleCounter++;
+    timedSleep(100);
   }
-
+  else
+    iIdleCounter = 0;
+  
   // check if it should go to sleep because of time
   if (sleepEnable && iIdleCounter >= 50) {
     Serial.print("Awake for ");
     Serial.print(iIdleCounter / 10);
-    Serial.println("sec");
-    Serial.println("Timer: Entering Sleep mode");
+    Serial.println("sec, entering sleep mode");
     delay(100);     // this delay is needed, the sleep 
                     //function will provoke a Serial error otherwise!!
     iIdleCounter = 0;
-    sleepNow();     // sleep function called here
+    deepSleep();     // sleep function called here
+
+    Serial.println("wake");
   }
 }
 
