@@ -54,7 +54,7 @@ private:
   uint8 m_nfilhit;
 
 public:
-  CCanMessage() : m_nExtFlg(0), m_nId(0), m_nDlc(0), m_nRtr(0), m_nfilhit(0)
+  CCanMessage() : m_nExtFlg(0), m_nId(0b11111111111), m_nDlc(0), m_nRtr(0), m_nfilhit(0)
   {
     for(uint8 i = 0; i < MAX_CHAR_IN_MESSAGE + 1; ++i)
       m_nDta[i] = 0;
@@ -63,8 +63,19 @@ public:
   CCanMessage(uint8 nExtFlg, uint8 nId, uint8 nLen, const uint8* nData, uint8 nRtr = 0, uint8 nfilhit = 0)
     : m_nExtFlg(nExtFlg), m_nId(nId), m_nDlc(nLen), m_nRtr(nRtr), m_nfilhit(nfilhit)
   {
-    for(uint8 i = 0; i < MAX_CHAR_IN_MESSAGE + 1; ++i)
+    if(m_nDlc > 8) m_nDlc = 8;
+    for(uint8 i = 0; i < m_nDlc && i < MAX_CHAR_IN_MESSAGE + 1; ++i)
       m_nDta[i] = nData[i];
+    m_nDta[MAX_CHAR_IN_MESSAGE] = '\0';
+  }
+
+  CCanMessage(uint8 nLen, const uint8* nData)
+    : m_nExtFlg(0), m_nId(0b11111111111), m_nDlc(nLen), m_nRtr(0), m_nfilhit(0)
+  {
+    if(m_nDlc > 8) m_nDlc = 8;
+    for(uint8 i = 0; i < m_nDlc && i < MAX_CHAR_IN_MESSAGE + 1; ++i)
+      m_nDta[i] = nData[i];
+    m_nDta[MAX_CHAR_IN_MESSAGE] = '\0';
   }
 
   uint8 getExtFlag()

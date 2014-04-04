@@ -454,12 +454,13 @@ void CCanMcp2515Impl::write_canMsg(const uint8 buffer_sidh_addr, const CCanMessa
   uint8 mcp_addr;
   uint8 nDlc;
   mcp_addr = buffer_sidh_addr;
+  nDlc = msg->m_nDlc > 8 ? 8 : msg->m_nDlc;
   /* write data bytes */
-  setRegisterS(mcp_addr+5, msg->m_nDta, msg->m_nDlc);
+  setRegisterS(mcp_addr+5, msg->m_nDta, nDlc);
   /* if RTR set bit in byte */
   if(msg->m_nRtr == 1)
   {
-    nDlc = msg->m_nDlc | MCP_RTR_MASK;
+    nDlc |= MCP_RTR_MASK;
   }
   /* write the RTR and DLC */
   setRegister((mcp_addr+4), nDlc);
@@ -516,7 +517,7 @@ void CCanMcp2515Impl::read_from_RXBn_and_clear_RXnIF(const uint8 addr_mask, CCan
   uint8 nLen = nRXBnDLC & 0b00001111;
 
   uint8 data[8];
-  for(uint8 i = 0; i < nLen; ++i)
+  for(uint8 i = 0; i < nLen && i < 8; ++i)
     msg->m_nDta[i]= spi_transfer(0x0);
 
   // release chip selection, this will clear the RXnIF
