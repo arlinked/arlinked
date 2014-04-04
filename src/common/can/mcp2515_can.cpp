@@ -841,10 +841,14 @@ uint8 CCanMcp2515Impl::sleep()
 
   uint8 mode = 0;
   uint8 count = 0;
-  while(count < 50 && mode != MCP_MODE_SLEEP)
+  do
   {
     mode = readRegister(MCP_CANCTRL) & MCP_MODE_MASK;
-  }
+    if(mode == MCP_MODE_SLEEP)
+      break;
+    delay(10);
+  } while(++count < 50);
+
   if(mode == MCP_MODE_SLEEP)
     return CAN_OK;
   else
@@ -857,10 +861,14 @@ uint8 CCanMcp2515Impl::wake()
 
   uint8 mode = 0;
   uint8 count = 0;
-  while(count < 50 && mode != MCP_MODE_NORMAL)
+  do
   {
     mode = readRegister(MCP_CANCTRL) & MCP_MODE_MASK;
-  }
+    if(mode == MCP_MODE_NORMAL)
+      break;
+    delay(10);
+  } while(++count < 50);
+
   if(mode == MCP_MODE_NORMAL)
     return CAN_OK;
   else
