@@ -162,10 +162,22 @@ void loop()
     Serial.print("Awake for ");
     Serial.print(iIdleCounter / 10);
     Serial.println("sec, entering sleep mode");
-    delay(100);     // this delay is needed, the sleep 
-                    //function will provoke a Serial error otherwise!!
+    delay(100);                // this delay is needed, the sleep 
+                               //function will provoke a Serial error otherwise!!
     iIdleCounter = 0;
-    deepSleep();     // sleep function called here
+
+    uint8 clientSleep = client.sleep();
+
+    if(ARLINKED_CLIENT_OK == clientSleep)
+    {
+      deepSleep();             // sleep function called here
+
+      uint8 clientWake = client.wake();
+    }
+    else
+    {
+      Serial.println("can-bus controller failed entering sleep mode");
+    }
 
     Serial.println("wake");
   }

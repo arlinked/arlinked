@@ -158,10 +158,10 @@ uint8 CCanMcp2515Impl::setCanCtrlMode(const uint8 newmode)
 {
   uint8 i;
 
-  modifyRegister(MCP_CANCTRL, MODE_MASK, newmode);
+  modifyRegister(MCP_CANCTRL, MCP_MODE_MASK, newmode);
 
   i = readRegister(MCP_CANCTRL);
-  i &= MODE_MASK;
+  i &= MCP_MODE_MASK;
 
   if ( i == newmode )
   {
@@ -337,7 +337,7 @@ uint8 CCanMcp2515Impl::init(const uint8 canSpeed)
 
   reset();
 
-  res = setCanCtrlMode(MODE_CONFIG);
+  res = setCanCtrlMode(MCP_MODE_CONFIG);
   if(res > 0)
   {
     CAN_DEBUG_LOG("Enter setting mode fall");
@@ -377,7 +377,7 @@ uint8 CCanMcp2515Impl::init(const uint8 canSpeed)
 #endif
 
   /* enter normal mode */
-  res = setCanCtrlMode(MODE_NORMAL);
+  res = setCanCtrlMode(MCP_MODE_NORMAL);
   if(res)
   {
     CAN_DEBUG_LOG("Enter Normal Mode Fall!!");
@@ -607,7 +607,7 @@ uint8 CCanMcp2515Impl::initMask(uint8 num, uint8 ext, uint32 ulData)
 {
   uint8 res = MCP2515_OK;
   CAN_DEBUG_LOG("Begin to set Mask!!\r\n");
-  res = setCanCtrlMode(MODE_CONFIG);
+  res = setCanCtrlMode(MCP_MODE_CONFIG);
   if(res > 0)
   {
     CAN_DEBUG_LOG("Enter setting mode fall\r\n");
@@ -627,7 +627,7 @@ uint8 CCanMcp2515Impl::initMask(uint8 num, uint8 ext, uint32 ulData)
     res =  MCP2515_FAIL;
   }
 
-  res = setCanCtrlMode(MODE_NORMAL);
+  res = setCanCtrlMode(MCP_MODE_NORMAL);
   if(res > 0)
   {
     CAN_DEBUG_LOG("Enter normal mode fall\r\n");
@@ -645,7 +645,7 @@ uint8 CCanMcp2515Impl::initFilt(uint8 num, uint8 ext, uint32 ulData)
 {
   uint8 res = MCP2515_OK;
   CAN_DEBUG_LOG("Begin to set Filter!!\r\n");
-  res = setCanCtrlMode(MODE_CONFIG);
+  res = setCanCtrlMode(MCP_MODE_CONFIG);
   if(res > 0)
   {
     CAN_DEBUG_LOG("Enter setting mode fall\r\n");
@@ -682,7 +682,7 @@ uint8 CCanMcp2515Impl::initFilt(uint8 num, uint8 ext, uint32 ulData)
     res = MCP2515_FAIL;
   }
 
-  res = setCanCtrlMode(MODE_NORMAL);
+  res = setCanCtrlMode(MCP_MODE_NORMAL);
   if(res > 0)
   {
     CAN_DEBUG_LOG("Enter normal mode fall\r\nSet filter fail!!\r\n");
@@ -829,9 +829,42 @@ uint8 CCanMcp2515Impl::checkInterrupt()
 {
   return readRegister(MCP_CANINTF);
 }
+
 void CCanMcp2515Impl::clearInterrupt(uint8 clearMask)
 {
   modifyRegister(MCP_CANINTF, clearMask, 0x0);
+}
+
+uint8 CCanMcp2515Impl::sleep()
+{
+  modifyRegister(MCP_CANCTRL, MCP_MODE_MASK, MCP_MODE_SLEEP);
+
+  uint8 mode = 0;
+  uint8 count = 0;
+  while(count < 50 && mode != MCP_MODE_SLEEP)
+  {
+    mode = readRegister(MCP_CANCTRL) & MCP_MODE_MASK;
+  }
+  if(mode == MCP_MODE_SLEEP)
+    return CAN_OK;
+  else
+    return CAN_CTRLERROR;
+}
+
+uint8 CCanMcp2515Impl::wake()
+{
+  modifyRegister(MCP_CANCTRL, MCP_MODE_MASK, MCP_MODE_NORMAL);
+
+  uint8 mode = 0;
+  uint8 count = 0;
+  while(count < 50 && mode != MCP_MODE_NORMAL)
+  {
+    mode = readRegister(MCP_CANCTRL) & MCP_MODE_MASK;
+  }
+  if(mode == MCP_MODE_NORMAL)
+    return CAN_OK;
+  else
+    return CAN_CTRLERROR;
 }
 
 } // end of namespace can

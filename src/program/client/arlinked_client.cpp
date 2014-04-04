@@ -97,11 +97,17 @@ uint8 CClient::handleInterrupts()
 
 uint8 CClient::sleep()
 {
-  return ARLINKED_CLIENT_OK;
+  if(CAN_OK == m_canModule.sleep())
+  	return ARLINKED_CLIENT_OK;
+  else
+    return ARLINKED_CLIENT_FAIL;
 }
 
 uint8 CClient::wake()
 {
-  return ARLINKED_CLIENT_OK;
+  if(CAN_OK == m_canModule.wake())
+    return ARLINKED_CLIENT_OK;
+  else
+    return ARLINKED_CLIENT_FAIL;
 }
 
