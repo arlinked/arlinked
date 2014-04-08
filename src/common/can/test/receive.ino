@@ -9,14 +9,15 @@ unsigned char stmp[8] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 
 extern "C" void setup()
 {
-	Serial.begin(9600);
+  Serial.begin(9600);
+  SPI.begin();
 
-	if(can10.begin(CAN_125KBPS) == CAN_OK)
-		Serial.print("can init ok!!\r\n");
-	else
-		Serial.print("Can init fail!!\r\n"); 
+  if(can10.begin(CAN_125KBPS) == CAN_OK)
+    Serial.print("can init ok!!\r\n");
+  else
+    Serial.print("Can init fail!!\r\n"); 
 
-	Serial.println("MCP2515 Library Receive Example...");
+  Serial.println("MCP2515 Library Receive Example...");
 }
 
 extern "C" void loop()
