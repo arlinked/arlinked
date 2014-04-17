@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="mil" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
@@ -3900,59 +3900,40 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 </library>
 <library name="Arlinked">
 <packages>
-<package name="SSOP-20">
-<description>&lt;b&gt;Shrink Small Outline Package&lt;/b&gt;&lt;p&gt;
-package type SS</description>
-<wire x1="-3.8" y1="-2.6" x2="3.8" y2="-2.6" width="0.2032" layer="21"/>
-<wire x1="3.8" y1="-2.6" x2="3.8" y2="2.6" width="0.2032" layer="21"/>
-<wire x1="3.8" y1="2.6" x2="-3.8" y2="2.6" width="0.2032" layer="21"/>
-<wire x1="-3.825" y1="2.575" x2="-3.8" y2="2.575" width="0.127" layer="21"/>
-<wire x1="-3.8" y1="2.575" x2="-3.8" y2="-2.6" width="0.2032" layer="21"/>
-<circle x="-3.048" y="-1.778" radius="0.3592" width="0.2032" layer="21"/>
-<smd name="1" x="-2.925" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="2" x="-2.275" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="3" x="-1.625" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="4" x="-0.975" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="5" x="-0.325" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="6" x="0.325" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="7" x="0.975" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="8" x="1.625" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="9" x="2.275" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="10" x="2.925" y="-3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="11" x="2.925" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="12" x="2.275" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="13" x="1.625" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="14" x="0.975" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="15" x="0.325" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="16" x="-0.325" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="17" x="-0.975" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="18" x="-1.625" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="19" x="-2.275" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<smd name="20" x="-2.925" y="3.625" dx="0.4" dy="1.5" layer="1"/>
-<text x="0" y="0" size="0.4064" layer="25">&gt;NAME</text>
-<text x="0" y="-1.27" size="0.4064" layer="27">&gt;VALUE</text>
-<rectangle x1="-3.1028" y1="-3.937" x2="-2.7472" y2="-2.6416" layer="51"/>
-<rectangle x1="-2.4529" y1="-3.937" x2="-2.0973" y2="-2.6416" layer="51"/>
-<rectangle x1="-1.8029" y1="-3.937" x2="-1.4473" y2="-2.6416" layer="51"/>
-<rectangle x1="-1.1529" y1="-3.937" x2="-0.7973" y2="-2.6416" layer="51"/>
-<rectangle x1="-0.5029" y1="-3.937" x2="-0.1473" y2="-2.6416" layer="51"/>
-<rectangle x1="0.1471" y1="-3.937" x2="0.5027" y2="-2.6416" layer="51"/>
-<rectangle x1="0.7971" y1="-3.937" x2="1.1527" y2="-2.6416" layer="51"/>
-<rectangle x1="1.4473" y1="-3.937" x2="1.8029" y2="-2.6416" layer="51"/>
-<rectangle x1="2.0973" y1="-3.937" x2="2.4529" y2="-2.6416" layer="51"/>
-<rectangle x1="2.7473" y1="-3.937" x2="3.1029" y2="-2.6416" layer="51"/>
-<rectangle x1="2.7471" y1="2.6416" x2="3.1027" y2="3.937" layer="51"/>
-<rectangle x1="2.0971" y1="2.6416" x2="2.4527" y2="3.937" layer="51"/>
-<rectangle x1="1.4471" y1="2.6416" x2="1.8027" y2="3.937" layer="51"/>
-<rectangle x1="0.7972" y1="2.6416" x2="1.1528" y2="3.937" layer="51"/>
-<rectangle x1="0.1472" y1="2.6416" x2="0.5028" y2="3.937" layer="51"/>
-<rectangle x1="-0.5027" y1="2.6416" x2="-0.1471" y2="3.937" layer="51"/>
-<rectangle x1="-1.1527" y1="2.6416" x2="-0.7971" y2="3.937" layer="51"/>
-<rectangle x1="-1.8027" y1="2.6416" x2="-1.4471" y2="3.937" layer="51"/>
-<rectangle x1="-2.4527" y1="2.6416" x2="-2.0971" y2="3.937" layer="51"/>
-<rectangle x1="-3.1027" y1="2.6416" x2="-2.7471" y2="3.937" layer="51"/>
+<package name="TSSOP20">
+<wire x1="-2.2922" y1="-3.8487" x2="2.2602" y2="-3.8487" width="0.127" layer="51"/>
+<wire x1="2.2602" y1="-3.8487" x2="2.2602" y2="3.2908" width="0.127" layer="51"/>
+<wire x1="2.2602" y1="3.2908" x2="-2.2922" y2="3.2908" width="0.127" layer="51"/>
+<wire x1="-2.2922" y1="3.2908" x2="-2.2922" y2="-3.8487" width="0.127" layer="51"/>
+<wire x1="-2.2922" y1="3.2908" x2="2.2602" y2="3.2908" width="0.127" layer="21"/>
+<wire x1="2.2602" y1="3.2908" x2="2.2602" y2="-3.8487" width="0.127" layer="21"/>
+<wire x1="2.2602" y1="-3.8487" x2="-2.2922" y2="-3.8487" width="0.127" layer="21"/>
+<wire x1="-2.2922" y1="-3.8487" x2="-2.2922" y2="3.2908" width="0.127" layer="21"/>
+<circle x="-1.716" y="2.7908" radius="0.1414" width="0.05" layer="21"/>
+<smd name="10" x="-2.937" y="-3.2508" dx="1" dy="0.4" layer="1"/>
+<smd name="9" x="-2.937" y="-2.5904" dx="1" dy="0.4" layer="1"/>
+<smd name="8" x="-2.943" y="-1.93" dx="1" dy="0.4" layer="1"/>
+<smd name="7" x="-2.937" y="-1.2696" dx="1" dy="0.4" layer="1"/>
+<smd name="6" x="-2.937" y="-0.6092" dx="1" dy="0.4" layer="1"/>
+<smd name="5" x="-2.937" y="0.0512" dx="1" dy="0.4" layer="1"/>
+<smd name="4" x="-2.937" y="0.7116" dx="1" dy="0.4" layer="1"/>
+<smd name="3" x="-2.937" y="1.372" dx="1" dy="0.4" layer="1"/>
+<smd name="2" x="-2.937" y="2.0324" dx="1" dy="0.4" layer="1"/>
+<smd name="1" x="-2.937" y="2.6928" dx="1" dy="0.4" layer="1"/>
+<smd name="20" x="2.905" y="2.6928" dx="1" dy="0.4" layer="1"/>
+<smd name="19" x="2.905" y="2.0324" dx="1" dy="0.4" layer="1"/>
+<smd name="18" x="2.905" y="1.372" dx="1" dy="0.4" layer="1"/>
+<smd name="17" x="2.905" y="0.7116" dx="1" dy="0.4" layer="1"/>
+<smd name="16" x="2.905" y="0.0512" dx="1" dy="0.4" layer="1"/>
+<smd name="15" x="2.905" y="-0.6092" dx="1" dy="0.4" layer="1"/>
+<smd name="14" x="2.905" y="-1.2696" dx="1" dy="0.4" layer="1"/>
+<smd name="13" x="2.911" y="-1.93" dx="1" dy="0.4" layer="1"/>
+<smd name="12" x="2.905" y="-2.5904" dx="1" dy="0.4" layer="1"/>
+<smd name="11" x="2.905" y="-3.2508" dx="1" dy="0.4" layer="1"/>
+<text x="-2.116" y="3.4908" size="0.254" layer="25">&gt;Name</text>
+<text x="-2.116" y="-4.2396" size="0.254" layer="27">&gt;Value</text>
 </package>
-<package name="JUMPER-1X3-SMD">
+<package name="JUMPER-1X3-SMD-10">
 <text x="-1.143" y="0.746" size="0.4064" layer="25">&gt;NAME</text>
 <text x="-1.243" y="-1.208" size="0.4064" layer="27">&gt;VALUE</text>
 <smd name="J-0" x="0" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
@@ -4007,7 +3988,7 @@ package type SS</description>
 <rectangle x1="0.4572" y1="1.8542" x2="0.8128" y2="2.8702" layer="51"/>
 <rectangle x1="1.7272" y1="1.8542" x2="2.0828" y2="2.8702" layer="51"/>
 </package>
-<package name="PAD-4MM">
+<package name="PAD-HOLE-4MM">
 <pad name="P$1" x="0" y="0" drill="3.2"/>
 </package>
 <package name="HC49U-V">
@@ -4206,9 +4187,35 @@ package type SS</description>
 <smd name="P$1" x="-4.3" y="0" dx="5.5" dy="1.5" layer="1"/>
 <smd name="P$2" x="4.3" y="0" dx="5.5" dy="1.5" layer="1"/>
 </package>
+<package name="JUMPER-1X3-SMD-20">
+<text x="-1.397" y="0.746" size="0.4064" layer="25">&gt;NAME</text>
+<smd name="J-0" x="0" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
+<smd name="J-1" x="-1.016" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
+<smd name="J-2" x="1.016" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
+<wire x1="-1.143" y1="0.635" x2="-1.397" y2="0.635" width="0.127" layer="21"/>
+<wire x1="-1.397" y1="0.635" x2="-1.397" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="-1.397" y1="-0.635" x2="-1.143" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="1.143" y1="0.635" x2="1.397" y2="0.635" width="0.127" layer="21"/>
+<wire x1="1.397" y1="0.635" x2="1.397" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="1.397" y1="-0.635" x2="1.143" y2="-0.635" width="0.127" layer="21"/>
+</package>
+<package name="JUMPER-1X2-SMD-10">
+<text x="-0.762" y="0.746" size="0.4064" layer="25">&gt;NAME</text>
+<smd name="J-0" x="0.381" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
+<smd name="J-1" x="-0.381" y="0" dx="1.016" dy="0.508" layer="1" rot="R90"/>
+<wire x1="-0.508" y1="0.635" x2="-0.762" y2="0.635" width="0.127" layer="21"/>
+<wire x1="-0.762" y1="0.635" x2="-0.762" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="-0.762" y1="-0.635" x2="-0.508" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0.635" x2="0.762" y2="0.635" width="0.127" layer="21"/>
+<wire x1="0.762" y1="0.635" x2="0.762" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="0.762" y1="-0.635" x2="0.508" y2="-0.635" width="0.127" layer="21"/>
+</package>
+<package name="PAD-SMD-2MM">
+<smd name="P$1" x="0" y="0" dx="1.27" dy="1.27" layer="1" roundness="100"/>
+</package>
 </packages>
 <symbols>
-<symbol name="MCP2515-SSOP-20">
+<symbol name="MCP2515-20P">
 <wire x1="12.7" y1="17.78" x2="12.7" y2="-17.78" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-17.78" x2="-12.7" y2="-17.78" width="0.254" layer="94"/>
 <wire x1="12.7" y1="17.78" x2="-12.7" y2="17.78" width="0.254" layer="94"/>
@@ -4224,8 +4231,8 @@ package type SS</description>
 <pin name="TX2RTS" x="-17.78" y="-2.54" length="middle"/>
 <pin name="OSC2" x="17.78" y="-12.7" length="middle" rot="R180"/>
 <pin name="OSC1" x="17.78" y="-10.16" length="middle" rot="R180"/>
-<pin name="VSS" x="0" y="22.86" length="middle" rot="R270"/>
-<pin name="VDD" x="0" y="-22.86" length="middle" rot="R90"/>
+<pin name="VDD" x="0" y="22.86" length="middle" direction="pwr" rot="R270"/>
+<pin name="VSS" x="0" y="-22.86" length="middle" direction="pwr" rot="R90"/>
 <pin name="RESET" x="17.78" y="12.7" length="middle" rot="R180"/>
 <pin name="CS" x="17.78" y="7.62" length="middle" rot="R180"/>
 <pin name="SO" x="17.78" y="5.08" length="middle" rot="R180"/>
@@ -4298,9 +4305,11 @@ package type SS</description>
 <pin name="CANH" x="15.24" y="0" visible="pin" length="middle" rot="R180"/>
 <pin name="S" x="15.24" y="2.54" visible="pin" length="middle" rot="R180"/>
 </symbol>
-<symbol name="PAD-HOLE">
-<circle x="-30.48" y="17.78" radius="7.184203125" width="0.254" layer="94"/>
-<text x="-20.32" y="17.78" size="1.778" layer="94">HOLE</text>
+<symbol name="PAD">
+<circle x="0" y="0" radius="2.54" width="0.6096" layer="94"/>
+<text x="-2.54" y="2.794" size="1.778" layer="95">PAD</text>
+<pin name="P$1" x="0" y="-7.62" visible="off" direction="in" rot="R90"/>
+<wire x1="0" y1="-0.508" x2="0" y2="0.254" width="0.8128" layer="94"/>
 </symbol>
 <symbol name="Q">
 <wire x1="1.016" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
@@ -4318,14 +4327,25 @@ package type SS</description>
 <pin name="2" x="2.54" y="0" visible="off" length="point" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="1" x="-2.54" y="0" visible="off" length="point" direction="pas" swaplevel="1"/>
 </symbol>
+<symbol name="JUMPER-1X2">
+<wire x1="3.81" y1="-3.81" x2="-2.54" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="-2.54" y1="3.81" x2="-2.54" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="3.81" y1="-3.81" x2="3.81" y2="3.81" width="0.4064" layer="94"/>
+<wire x1="-2.54" y1="3.81" x2="3.81" y2="3.81" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="2.54" y2="-1.27" width="0.6096" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="2.54" y2="1.27" width="0.6096" layer="94"/>
+<text x="-2.54" y="4.572" size="1.778" layer="95">&gt;NAME</text>
+<pin name="J-0" x="7.62" y="-1.27" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="J-1" x="7.62" y="1.27" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="MCP2515">
+<deviceset name="MCP2515-20P" prefix="_">
 <gates>
-<gate name="G$1" symbol="MCP2515-SSOP-20" x="0" y="0"/>
+<gate name="G$1" symbol="MCP2515-20P" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SSOP-20">
+<device name="" package="TSSOP20">
 <connects>
 <connect gate="G$1" pin="15" pad="15"/>
 <connect gate="G$1" pin="6" pad="6"/>
@@ -4359,7 +4379,17 @@ package type SS</description>
 <gate name="G$1" symbol="JUMPER-1X3" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="JUMPER-1X3-SMD">
+<device name="" package="JUMPER-1X3-SMD-10">
+<connects>
+<connect gate="G$1" pin="J-0" pad="J-0"/>
+<connect gate="G$1" pin="J-1" pad="J-1"/>
+<connect gate="G$1" pin="J-2" pad="J-2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-XX" package="JUMPER-1X3-SMD-20">
 <connects>
 <connect gate="G$1" pin="J-0" pad="J-0"/>
 <connect gate="G$1" pin="J-1" pad="J-1"/>
@@ -4422,10 +4452,21 @@ package type SS</description>
 </deviceset>
 <deviceset name="PAD">
 <gates>
-<gate name="G$1" symbol="PAD-HOLE" x="12.7" y="2.54"/>
+<gate name="G$1" symbol="PAD" x="12.7" y="2.54"/>
 </gates>
 <devices>
-<device name="" package="PAD-4MM">
+<device name="" package="PAD-HOLE-4MM">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_SMD" package="PAD-SMD-2MM">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -4531,6 +4572,22 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </device>
 </devices>
 </deviceset>
+<deviceset name="JUMPER-1X2">
+<gates>
+<gate name="G$1" symbol="JUMPER-1X2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="JUMPER-1X2-SMD-10">
+<connects>
+<connect gate="G$1" pin="J-0" pad="J-1"/>
+<connect gate="G$1" pin="J-1" pad="J-0"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -4549,7 +4606,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </classes>
 <parts>
 <part name="C1" library="SparkFun" deviceset="CAP_POL" device="1206" value="10uF"/>
-<part name="C2" library="SparkFun" deviceset="CAP" device="0402-CAP" value="407"/>
+<part name="C2" library="SparkFun" deviceset="CAP" device="0402-CAP" value="0.1uF"/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 <part name="Y1" library="SparkFun" deviceset="RESONATOR" device="SMD" value="xtal"/>
 <part name="GND2" library="SparkFun" deviceset="GND" device=""/>
@@ -4559,24 +4616,24 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="GND5" library="SparkFun" deviceset="GND" device=""/>
 <part name="R1" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="10k"/>
 <part name="P+4" library="SparkFun" deviceset="VCC" device=""/>
-<part name="U1" library="Arlinked" deviceset="MCP2515" device=""/>
+<part name="U1" library="Arlinked" deviceset="MCP2515-20P" device=""/>
 <part name="JP3" library="SparkFun" deviceset="M06" device="SIP" value="INPUT_HEADER"/>
 <part name="JP4" library="SparkFun" deviceset="M12" device="PTH"/>
 <part name="JP5" library="SparkFun" deviceset="M12" device="PTH"/>
 <part name="JP1" library="SparkFun" deviceset="M02" device="PTH" value="HOLE1"/>
 <part name="JP2" library="SparkFun" deviceset="M02" device="PTH" value="HOLE2"/>
-<part name="JP7" library="Arlinked" deviceset="JUMPER-1X3" device=""/>
+<part name="JP7" library="Arlinked" deviceset="JUMPER-1X3" device="" value="JUMPER-1X3"/>
 <part name="U3" library="SparkFun" deviceset="V_REG_LDO" device="SMD"/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
 <part name="C3" library="SparkFun" deviceset="CAP_POL" device="1206" value="10uF"/>
 <part name="F1" library="SparkFun" deviceset="PTC" device="SMD"/>
 <part name="P+1" library="SparkFun" deviceset="VCC" device=""/>
-<part name="LED1" library="SparkFun" deviceset="LED" device="0603" value="2mA"/>
-<part name="R2" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="320R"/>
+<part name="LED1" library="SparkFun" deviceset="LED" device="0603" value="Green"/>
+<part name="R2" library="SparkFun" deviceset="RESISTOR" device="0402-RES" value="2~10K"/>
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
 <part name="U$2" library="Arlinked" deviceset="JUMPER-2X6" device=""/>
 <part name="U2" library="Arlinked" deviceset="TJA1050" device=""/>
-<part name="J8" library="Arlinked" deviceset="JUMPER-1X3" device="" value=""/>
+<part name="J8" library="Arlinked" deviceset="JUMPER-1X3" device="" value="JUMPER-1X3"/>
 <part name="P+2" library="SparkFun" deviceset="VCC" device=""/>
 <part name="R3" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="10k"/>
 <part name="U$1" library="Arlinked" deviceset="PAD" device=""/>
@@ -4584,19 +4641,32 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="C5" library="SparkFun" deviceset="CAP" device="0402-CAP"/>
 <part name="GND8" library="SparkFun" deviceset="GND" device=""/>
 <part name="Y2" library="Arlinked" deviceset="CRYSTAL" device="PAD-ONLY"/>
-<part name="LED2" library="SparkFun" deviceset="LED" device="0603" value="2mA Red"/>
-<part name="R4" library="SparkFun" deviceset="RESISTOR" device="0402-RES" value="320R"/>
+<part name="LED2" library="SparkFun" deviceset="LED" device="0603" value="Red"/>
+<part name="R4" library="SparkFun" deviceset="RESISTOR" device="0402-RES" value="2~10K"/>
 <part name="GND9" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+5" library="SparkFun" deviceset="VCC" device=""/>
+<part name="R5" library="SparkFun" deviceset="RESISTOR" device="0603-RES"/>
+<part name="JP8" library="Arlinked" deviceset="JUMPER-1X2" device=""/>
+<part name="U$3" library="Arlinked" deviceset="PAD" device="_SMD"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
+<wire x1="121.92" y1="17.78" x2="121.92" y2="-12.7" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="121.92" y1="-12.7" x2="144.78" y2="-12.7" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="144.78" y1="-12.7" x2="144.78" y2="17.78" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="144.78" y1="17.78" x2="121.92" y2="17.78" width="0.1524" layer="97" style="shortdash"/>
+<text x="124.46" y="-10.16" size="1.778" layer="97">Reserved crystal
+device part</text>
+<wire x1="101.6" y1="83.82" x2="134.62" y2="83.82" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="134.62" y1="83.82" x2="134.62" y2="66.04" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="134.62" y1="66.04" x2="101.6" y2="66.04" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="101.6" y1="66.04" x2="101.6" y2="83.82" width="0.1524" layer="97" style="shortdash"/>
 </plain>
 <instances>
-<instance part="C1" gate="G$1" x="43.18" y="48.26"/>
-<instance part="C2" gate="G$1" x="50.8" y="45.72"/>
-<instance part="GND1" gate="1" x="43.18" y="40.64"/>
+<instance part="C1" gate="G$1" x="38.1" y="48.26"/>
+<instance part="C2" gate="G$1" x="45.72" y="45.72"/>
+<instance part="GND1" gate="1" x="38.1" y="40.64"/>
 <instance part="Y1" gate="G$1" x="111.76" y="12.7"/>
 <instance part="GND2" gate="1" x="111.76" y="2.54"/>
 <instance part="GND3" gate="1" x="88.9" y="2.54"/>
@@ -4604,7 +4674,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <instance part="GND4" gate="1" x="50.8" y="63.5"/>
 <instance part="GND5" gate="1" x="116.84" y="50.8"/>
 <instance part="R1" gate="G$1" x="109.22" y="45.72" rot="R90"/>
-<instance part="P+4" gate="1" x="88.9" y="50.8"/>
+<instance part="P+4" gate="1" x="93.98" y="50.8"/>
 <instance part="U1" gate="G$1" x="88.9" y="27.94"/>
 <instance part="JP3" gate="G$1" x="10.16" y="68.58" rot="R180"/>
 <instance part="JP4" gate="G$1" x="66.04" y="12.7" rot="R180"/>
@@ -4615,8 +4685,8 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <instance part="U3" gate="G$1" x="10.16" y="45.72"/>
 <instance part="GND6" gate="1" x="-2.54" y="30.48"/>
 <instance part="C3" gate="G$1" x="-12.7" y="40.64"/>
-<instance part="F1" gate="G$1" x="30.48" y="50.8"/>
-<instance part="P+1" gate="1" x="43.18" y="50.8"/>
+<instance part="F1" gate="G$1" x="25.4" y="50.8"/>
+<instance part="P+1" gate="1" x="38.1" y="50.8"/>
 <instance part="LED1" gate="G$1" x="124.46" y="30.48"/>
 <instance part="R2" gate="G$1" x="124.46" y="38.1" rot="R90"/>
 <instance part="GND7" gate="1" x="124.46" y="22.86"/>
@@ -4625,15 +4695,18 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <instance part="J8" gate="G$1" x="124.46" y="55.88" rot="R180"/>
 <instance part="P+2" gate="1" x="99.06" y="58.42"/>
 <instance part="R3" gate="G$1" x="104.14" y="58.42" rot="R180"/>
-<instance part="U$1" gate="G$1" x="25.4" y="-22.86"/>
-<instance part="C4" gate="G$1" x="129.54" y="5.08"/>
-<instance part="C5" gate="G$1" x="124.46" y="7.62" rot="R180"/>
-<instance part="GND8" gate="1" x="124.46" y="0"/>
-<instance part="Y2" gate="G$1" x="127" y="10.16"/>
-<instance part="LED2" gate="G$1" x="-33.02" y="40.64"/>
-<instance part="R4" gate="G$1" x="-33.02" y="48.26" rot="R90"/>
-<instance part="GND9" gate="1" x="-33.02" y="33.02"/>
-<instance part="P+5" gate="1" x="-33.02" y="53.34"/>
+<instance part="U$1" gate="G$1" x="-7.62" y="0"/>
+<instance part="C4" gate="G$1" x="134.62" y="2.54"/>
+<instance part="C5" gate="G$1" x="129.54" y="5.08" rot="R180"/>
+<instance part="GND8" gate="1" x="129.54" y="-2.54"/>
+<instance part="Y2" gate="G$1" x="132.08" y="7.62"/>
+<instance part="LED2" gate="G$1" x="137.16" y="30.48"/>
+<instance part="R4" gate="G$1" x="137.16" y="38.1" rot="R90"/>
+<instance part="GND9" gate="1" x="137.16" y="22.86"/>
+<instance part="P+5" gate="1" x="137.16" y="43.18"/>
+<instance part="R5" gate="G$1" x="116.84" y="71.12"/>
+<instance part="JP8" gate="G$1" x="99.06" y="-12.7" rot="R180"/>
+<instance part="U$3" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 </busses>
@@ -4646,13 +4719,6 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <pinref part="U2" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="R1" gate="G$1" pin="2"/>
-<pinref part="P+4" gate="1" pin="VCC"/>
-<pinref part="U1" gate="G$1" pin="VSS"/>
-<junction x="88.9" y="50.8"/>
-<wire x1="88.9" y1="50.8" x2="109.22" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="P+2" gate="1" pin="VCC"/>
 </segment>
@@ -4663,24 +4729,36 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <segment>
 <pinref part="C1" gate="G$1" pin="+"/>
 <pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="43.18" y1="50.8" x2="50.8" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="50.8" x2="45.72" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="F1" gate="G$1" pin="2"/>
-<wire x1="38.1" y1="50.8" x2="43.18" y2="50.8" width="0.1524" layer="91"/>
-<junction x="50.8" y="50.8"/>
-<junction x="43.18" y="50.8"/>
+<wire x1="33.02" y1="50.8" x2="38.1" y2="50.8" width="0.1524" layer="91"/>
+<junction x="45.72" y="50.8"/>
+<junction x="38.1" y="50.8"/>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <pinref part="P+5" gate="1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="4"/>
+<wire x1="55.88" y1="20.32" x2="45.72" y2="20.32" width="0.1524" layer="91"/>
+<label x="45.72" y="20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="P+4" gate="1" pin="VCC"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="93.98" y1="50.8" x2="109.22" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="VDD"/>
+<wire x1="88.9" y1="50.8" x2="93.98" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="1">
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
 <pinref part="C1" gate="G$1" pin="-"/>
-<wire x1="50.8" y1="43.18" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<junction x="43.18" y="43.18"/>
+<junction x="38.1" y="43.18"/>
 </segment>
 <segment>
 <pinref part="Y1" gate="G$1" pin="2"/>
@@ -4691,10 +4769,6 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <wire x1="63.5" y1="68.58" x2="50.8" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="68.58" x2="50.8" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="GND3" gate="1" pin="GND"/>
-<pinref part="U1" gate="G$1" pin="VDD"/>
 </segment>
 <segment>
 <pinref part="JP3" gate="G$1" pin="5"/>
@@ -4722,13 +4796,26 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <segment>
 <pinref part="C4" gate="G$1" pin="2"/>
 <pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="129.54" y1="2.54" x2="124.46" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="0" x2="129.54" y2="0" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="1"/>
-<junction x="124.46" y="2.54"/>
+<junction x="129.54" y="0"/>
 </segment>
 <segment>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <pinref part="GND9" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP5" gate="G$1" pin="4"/>
+<wire x1="33.02" y1="20.32" x2="22.86" y2="20.32" width="0.1524" layer="91"/>
+<label x="22.86" y="20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="VSS"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="2"/>
+<wire x1="55.88" y1="25.4" x2="45.72" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -4750,12 +4837,12 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </net>
 <net name="OSC2" class="0">
 <segment>
-<wire x1="119.38" y1="15.24" x2="124.46" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="15.24" x2="124.46" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="12.7" x2="129.54" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="12.7" x2="129.54" y2="7.62" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <pinref part="Y2" gate="G$1" pin="1"/>
-<label x="119.38" y="15.24" size="1.778" layer="95"/>
-<junction x="124.46" y="10.16"/>
+<label x="124.46" y="12.7" size="1.778" layer="95"/>
+<junction x="129.54" y="7.62"/>
 </segment>
 <segment>
 <pinref part="Y1" gate="G$1" pin="1"/>
@@ -4767,12 +4854,12 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </net>
 <net name="OSC1" class="0">
 <segment>
-<wire x1="119.38" y1="17.78" x2="129.54" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="17.78" x2="129.54" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="15.24" x2="134.62" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="15.24" x2="134.62" y2="7.62" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <pinref part="Y2" gate="G$1" pin="2"/>
-<label x="119.38" y="17.78" size="1.778" layer="95"/>
-<junction x="129.54" y="10.16"/>
+<label x="124.46" y="15.24" size="1.778" layer="95"/>
+<junction x="134.62" y="7.62"/>
 </segment>
 <segment>
 <pinref part="Y1" gate="G$1" pin="3"/>
@@ -4780,6 +4867,11 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <wire x1="106.68" y1="17.78" x2="114.3" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="OSC1"/>
 <junction x="114.3" y="12.7"/>
+</segment>
+<segment>
+<pinref part="JP8" gate="G$1" pin="J-1"/>
+<wire x1="91.44" y1="-13.97" x2="80.01" y2="-13.97" width="0.1524" layer="91"/>
+<label x="80.01" y="-13.97" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -4886,6 +4978,11 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <wire x1="5.08" y1="68.58" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
 <label x="-7.62" y="68.58" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="R5" gate="G$1" pin="1"/>
+<wire x1="111.76" y1="71.12" x2="104.14" y2="71.12" width="0.1524" layer="91"/>
+<label x="104.14" y="71.12" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="CANL" class="0">
 <segment>
@@ -4897,6 +4994,11 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <pinref part="JP3" gate="G$1" pin="2"/>
 <wire x1="5.08" y1="71.12" x2="-7.62" y2="71.12" width="0.1524" layer="91"/>
 <label x="-7.62" y="71.12" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="121.92" y1="71.12" x2="129.54" y2="71.12" width="0.1524" layer="91"/>
+<label x="124.46" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SPI-CS6" class="0">
@@ -4945,6 +5047,11 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <pinref part="JP5" gate="G$1" pin="11"/>
 <wire x1="33.02" y1="2.54" x2="22.86" y2="2.54" width="0.1524" layer="91"/>
 <label x="22.86" y="2.54" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP8" gate="G$1" pin="J-0"/>
+<wire x1="91.44" y1="-11.43" x2="80.01" y2="-11.43" width="0.1524" layer="91"/>
+<label x="80.01" y="-11.43" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SPI-CS2" class="0">
@@ -5001,6 +5108,11 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <wire x1="-12.7" y1="50.8" x2="-12.7" y2="43.18" width="0.1524" layer="91"/>
 <junction x="-7.62" y="50.8"/>
 </segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="1"/>
+<wire x1="55.88" y1="27.94" x2="45.72" y2="27.94" width="0.1524" layer="91"/>
+<label x="45.72" y="27.94" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED1-CAN-2" class="0">
 <segment>
@@ -5032,9 +5144,8 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <pinref part="U3" gate="G$1" pin="OUT"/>
 <pinref part="F1" gate="G$1" pin="1"/>
 <wire x1="17.78" y1="50.8" x2="20.32" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="50.8" x2="25.4" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="50.8" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
-<label x="17.78" y="55.88" size="1.778" layer="95"/>
+<wire x1="20.32" y1="50.8" x2="20.32" y2="58.42" width="0.1524" layer="91"/>
+<label x="17.78" y="58.42" size="1.778" layer="95"/>
 <junction x="20.32" y="50.8"/>
 </segment>
 <segment>
@@ -5049,9 +5160,27 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <pinref part="LED2" gate="G$1" pin="A"/>
 </segment>
 </net>
+<net name="CLKOUT" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="CLKOUT"/>
+<wire x1="71.12" y1="35.56" x2="60.96" y2="35.56" width="0.1524" layer="91"/>
+<label x="60.96" y="35.56" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$3" gate="G$1" pin="P$1"/>
+<wire x1="0" y1="-7.62" x2="7.62" y2="-7.62" width="0.1524" layer="91"/>
+<label x="2.54" y="-7.62" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
